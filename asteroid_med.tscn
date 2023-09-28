@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://c27vt0kt3p8nb"]
+
+[ext_resource type="Script" path="res://Asteroid.gd" id="1_q7gf0"]
+[ext_resource type="Texture2D" uid="uid://co4bkn81y2h0c" path="res://Graphics/meteorGrey_med1.png" id="2_3ymxr"]
+[ext_resource type="PackedScene" uid="uid://so7iepselqg1" path="res://asteroid_small.tscn" id="2_o3glg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_miys1"]
+radius = 27.1662
+
+[node name="Asteroid" type="RigidBody2D"]
+script = ExtResource("1_q7gf0")
+debris_scene = ExtResource("2_o3glg")
+debris_amount = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_3ymxr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_miys1")
+
+[connection signal="was_shoot" from="." to="." method="_on_was_shoot"]

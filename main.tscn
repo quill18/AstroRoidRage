@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://xbton7gahdna"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_uyaxy"]
+[ext_resource type="Texture2D" uid="uid://dvi281mm8my4r" path="res://Graphics/black.png" id="2_6hmx1"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_uyaxy")
+
+[node name="Background Stars" type="Sprite2D" parent="."]
+position = Vector2(398, 301.5)
+scale = Vector2(3.21875, 2.46484)
+texture = ExtResource("2_6hmx1")
