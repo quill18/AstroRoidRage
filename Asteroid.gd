@@ -18,5 +18,5 @@ func _on_was_shoot():
 		for i in debris_amount:
 			var d = debris_scene.instantiate()
 			d.global_position = global_position
-			get_parent().add_child(d)
+			get_parent().call_deferred("add_child", d)
 	queue_free()
