@@ -1,0 +1,98 @@
+[gd_scene load_steps=2 format=3 uid="uid://b87c3hyhrrohp"]
+
+[ext_resource type="Script" path="res://main_ui.gd" id="1_0pmwp"]
+
+[node name="MainUI" type="Control" node_paths=PackedStringArray("score_label", "level_label", "lives_label", "game_over_panel")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0pmwp")
+score_label = NodePath("Score")
+level_label = NodePath("Level")
+lives_label = NodePath("Lives")
+game_over_panel = NodePath("GameOverPopup")
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 1
+offset_right = 264.0
+offset_bottom = 26.0
+size_flags_horizontal = 3
+text = "Score: 000"
+
+[node name="Level" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -132.0
+offset_right = 132.0
+offset_bottom = 26.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+text = "Level: 000"
+horizontal_alignment = 1
+
+[node name="Lives" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -264.0
+offset_bottom = 26.0
+grow_horizontal = 0
+size_flags_horizontal = 3
+text = "Lives: 000"
+horizontal_alignment = 2
+
+[node name="GameOverPopup" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -100.0
+offset_right = 150.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="GameOverPopup"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="GameOverPopup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverPopup/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Restart Button" type="Button" parent="GameOverPopup/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="Exit Button" type="Button" parent="GameOverPopup/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[connection signal="pressed" from="GameOverPopup/MarginContainer/VBoxContainer/Restart Button" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="GameOverPopup/MarginContainer/VBoxContainer/Exit Button" to="." method="_on_exit_button_pressed"]

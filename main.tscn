@@ -1,12 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://xbton7gahdna"]
+[gd_scene load_steps=4 format=3 uid="uid://xbton7gahdna"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_uyaxy"]
 [ext_resource type="Texture2D" uid="uid://dvi281mm8my4r" path="res://Graphics/black.png" id="2_6hmx1"]
+[ext_resource type="PackedScene" uid="uid://b87c3hyhrrohp" path="res://main_ui.tscn" id="3_su33r"]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" node_paths=PackedStringArray("asteroid_container")]
 script = ExtResource("1_uyaxy")
+asteroid_container = NodePath("Asteroid Container")
 
 [node name="Background Stars" type="Sprite2D" parent="."]
 position = Vector2(398, 301.5)
 scale = Vector2(3.21875, 2.46484)
 texture = ExtResource("2_6hmx1")
+
+[node name="MainUI" parent="." instance=ExtResource("3_su33r")]
+z_index = 1
+
+[node name="Asteroid Container" type="Node2D" parent="."]
+
+[connection signal="GAME_OVER" from="." to="MainUI" method="_on_main_game_over"]
+[connection signal="LEVEL_CHANGED" from="." to="MainUI" method="_on_main_level_changed"]
+[connection signal="LIVES_CHANGED" from="." to="MainUI" method="_on_main_lives_changed"]
+[connection signal="SCORE_CHANGED" from="." to="MainUI" method="_on_main_score_changed"]
