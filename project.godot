@@ -21,6 +21,10 @@ window/size/viewport_width=800
 window/size/viewport_height=600
 window/stretch/mode="canvas_items"
 
+[dotnet]
+
+project/assembly_name="Astro Roid Rage"
+
 [input]
 
 rotate_cw={
